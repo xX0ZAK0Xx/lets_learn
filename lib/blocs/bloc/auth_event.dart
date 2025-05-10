@@ -13,3 +13,5 @@ class VerifyOTPEvent extends AuthEvent {
 
   VerifyOTPEvent({required this.otp, required this.verificationId});
 }
+
+class GoogleAuthEvent extends AuthEvent{}

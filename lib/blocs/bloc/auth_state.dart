@@ -29,3 +29,14 @@ final class VerifyOtpFailedState extends AuthState {
 
   VerifyOtpFailedState({required this.errorMessage});
 }
+
+// Google Auth States
+final class GoogleAuthLoadingState extends AuthState {}
+
+final class GoogleAuthSuccessState extends AuthState {}
+
+final class GoogleAuthFailedState extends AuthState {
+  final String errorMessage;
+
+  GoogleAuthFailedState({required this.errorMessage});
+}
