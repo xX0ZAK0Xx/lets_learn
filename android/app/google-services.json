@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "588455295255",
+    "project_id": "lets-learn-3b6ff",
+    "storage_bucket": "lets-learn-3b6ff.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:588455295255:android:5e37bdeaec7c158cb45f52",
+        "android_client_info": {
+          "package_name": "com.example.myapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC7nBx-yoW-GokaJlax7X6YRSgHE1eUxiM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
