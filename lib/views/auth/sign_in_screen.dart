@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:myapp/blocs/bloc/auth_bloc.dart';
+import 'package:myapp/views/home/home_screen.dart';
 
 import 'otp_screen.dart';
 
@@ -25,6 +26,19 @@ class SignInScreen extends StatelessWidget {
               MaterialPageRoute(builder: (c)=>VerificationScreen(verificationId: state.verificationId, phoneNumber: state.phonNumber,)),
             );
           }else if(state is PhoneNumberAuthFailedState){
+            ScaffoldMessenger.of(
+              context,
+            ).showSnackBar(SnackBar(content: Text('Failed: ${state.errorMessage}')));
+          }else if(state is GoogleAuthLoadingState){
+            ScaffoldMessenger.of(
+              context,
+            ).showSnackBar(const SnackBar(content: Text('Signing in with google')));
+          }else if(state is GoogleAuthSuccessState){
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (c)=>const HomeScreen()),
+            );
+          }else if(state is GoogleAuthFailedState){
             ScaffoldMessenger.of(
               context,
             ).showSnackBar(SnackBar(content: Text('Failed: ${state.errorMessage}')));
@@ -119,9 +133,13 @@ class SignInScreen extends StatelessWidget {
                           ),
                           const SizedBox(height: 16.0),
                           TextButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              context.read<AuthBloc>().add(
+                                GoogleAuthEvent(),
+                              );
+                            },
                             child: Text(
-                              'Forgot Password?',
+                              'Sign In with Google',
                               style: Theme.of(
                                 context,
                               ).textTheme.bodyMedium!.copyWith(
