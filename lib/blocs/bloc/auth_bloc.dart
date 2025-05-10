@@ -99,7 +99,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         );
         await FirebaseAuth.instance.signInWithCredential(cred).then((onValue) {
           if (onValue.user != null) {
-            emit(GoogleAuthSuccessState());
+            emit(GoogleAuthSuccessState(user: onValue.user!));
           } else {
             emit(GoogleAuthFailedState(errorMessage: "Something went wrong"));
           }
